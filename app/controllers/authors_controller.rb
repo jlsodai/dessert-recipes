@@ -61,7 +61,7 @@ class AuthorsController < ApplicationController
     end
 
     def author_params
-      params.require(:author).permit(:name, :bio, :username, :email, :password)
+      params.require(:author).permit(:name, :bio, :username, :email, :password, :image)
     end
     # Confirms a logged-in user.
     def logged_in_author

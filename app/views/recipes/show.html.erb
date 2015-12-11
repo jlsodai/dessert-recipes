@@ -11,7 +11,7 @@
     </form>
   </div>
   <div class="col-md-9">
-     <img src="http://placehold.it/900x470">
+    <%= image_tag @recipe.image.url(:recipe_main, class: "recipe_image") %>
 <!--    <p>
       <strong>Description:</strong>
       <%= @recipe.description %>
@@ -24,7 +24,7 @@
 
     <p>
       <strong>Image:</strong>
-      <%= image_tag @recipe.image.url(:thumb, class: "recipe_image") %>
+      <%= image_tag @recipe.image.url(:recipe_main, class: "recipe_image") %>
     </p>
     <% if logged_in? %>
       <% if @recipe.author_id == current_author.id %>
@@ -45,16 +45,20 @@
 
     <h1>Add Comments</h1> -->
 
-    <h1><%= @recipe.name %></h1>
       <div class="c-panel c-margin-b-30">
         <div class="c-author">
           <a href="#">By <span class="c-font-uppercase"><%= @author.name %></span></a> on <%= @recipe.created_at.strftime("%d %b, %y - %I:%M %p") %>
-          <span class="c-comments"><a href="#"><i class="icon-speech"></i> 30 comments</a></span>
+          <!-- <span class="c-comments"><%= @comments.count %> comments</span> -->
         </div>
       </div>
 
       <div class="c-desc">
-        <p> Lorem ipsum dolor sit amet, coectetuer diam ipsum dolor sit amet nonummy coectetuer diam ipsum dolor sit coectetuer adipiscing elit amipiscing elit sit adipiscing consectetuer ipsum dolor sit amipiscing elit sit amet, sit amet, coectetuer adipiscing elit adipiscing consectetuer ipsum dolor sit amet diam nonummy adipiscing elit sit amet, sit ame. </p>
+        <h3>Description</h3>
+        <p><%= @recipe.description %></p>
+        <h3>Ingredients</h3>
+        <p><%= @recipe.ingredients %></p>
+        <h3>Directions</h3>
+        <p><%= @recipe.directions %></p>
       </div>
 
       <div class="comments">
@@ -69,7 +73,7 @@
                    <div class="comment-by"><strong><%= c.name %></strong> <span class="date"><%= c.created_at.strftime("%d %b, %y at %I:%M %p") %></span>
                      <a aria-label="Reply to Vasterad" onclick="" href="" class="comment-reply-link" rel="nofollow"><i class="fa fa-reply"></i>Reply</a>
                      </div>
-                     <p><%= c.content %></p>
+                     <p><%= c.content.gsub(/\n/, '<br/><br/>') %></p>
                    </div>
                </div>
               </li><!-- #comment-## -->

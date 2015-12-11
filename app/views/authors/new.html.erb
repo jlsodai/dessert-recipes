@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-  <%= form_for @author, :html => {:class => 'form-horizontal'} do |f| %>
+  <%= form_for @author, :html => {class: 'form-horizontal', multipart: true} do |f| %>
   <fieldset>
 
   <%= render 'shared/error_messages' %>
@@ -56,6 +56,13 @@
     <label class="col-md-4 control-label" for="author_bio">Profile</label>
     <div class="col-md-4">                     
       <%= f.text_area :bio, placeholder: "Enter Profile Details", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label">Upload Image</label>
+    <div class="col-md-4">                     
+      <%= f.file_field :image, class: "form-control" %>
     </div>
   </div>
   

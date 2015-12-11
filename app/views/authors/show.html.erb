@@ -2,7 +2,7 @@
     <h1>Recipes for - <%= @author.name %></h1>
   <div class="col-md-3">
     <div class="thumbnail">
-      <img alt="" src="http://themehats.com/themes/jango/assets/base/img/content/team/team9.jpg" class="c-overlay-object img-responsive">
+      <%= image_tag @author.image.url(:author_image), class: "grow c-overlay-object img-responsive" %>
       <div class="c-body">
         <h4><%= @author.name %></h4>
         <p><strong>Username: </strong><%= @author.username %></p>
@@ -21,7 +21,8 @@
     <% if @recipes.count > 0%>
         <%= render "recipes/recipe_index3" %>
     <% else %>
-        <p><%= "No Recipes Exist for #{@author.name}" %></p>
+        <p><%= "No Recipes Exist for #{@author.name}." %></p>
     <% end %>
+    <p><%= link_to 'Add new Recipe', new_recipe_path %></p>
   </div>
 </div>

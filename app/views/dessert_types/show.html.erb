@@ -5,6 +5,6 @@
 <% else %>
     <p><%= "No Recipes Exist for #{@dessert_type.name}" %></p>
 <% end %>
-
+	<p><%= link_to 'Add new Recipe', new_recipe_path %></p>
 <%#= link_to 'New Dessert Type', new_dessert_type_path %>
 

@@ -7,18 +7,13 @@
   </div>
 </form>
 <div class="c-content-ver-nav">
-	<div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
-		<% if params[:controller] == "recipes" %>
-			<h3 class="c-font-bold c-font-uppercase">Dessert Type</h3>
-		<% end %>
-		<div class="c-line-left c-theme-bg">
-		</div>
-	</div>
+<br/>
 	<% if params[:controller] == "recipes" %>
+	<div class="list-group">
+  		<a href="#" class="list-group-item active"><strong>Dessert Type:</strong></a>
 		<% @dessert_types.each do |dessert_type| %>
-		    <ul class="c-menu c-arrow-dot1 c-theme">
-		    	<li><%= link_to truncate(dessert_type.name, :length => 25), dessert_type_path(dessert_type) %> (3)</li>
-		    </ul>
+		    <%= link_to "#{truncate(dessert_type.name, :length => 25)} (#{@recipes.where(dessert_type_id: dessert_type.id).count})", dessert_type_path(dessert_type), class: 'list-group-item' %>
 		<% end %>
+	</div>
 	<% end %>
 </div>

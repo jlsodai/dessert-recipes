@@ -18,7 +18,12 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    if logged_in?
+      @recipe = Recipe.new
+    else
+      flash[:danger] = "Kindly login or create an account to add a Recipe."
+      redirect_to login_url
+    end
   end
 
   def edit

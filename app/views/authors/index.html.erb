@@ -25,17 +25,16 @@
   </div>
 </div>
 
+<% @authors.each_slice(4) do |authors| %>
 <div class="row">
-  <% @authors.each do |author| %>
+  <% authors.each do |author| %>
     <div class="col-md-3">
       <!-- <a href="<%= author_path(author) %>"> -->
       <div class="thumbnail">
-        <img alt="" src="http://themehats.com/themes/jango/assets/base/img/content/team/team9.jpg" class="c-overlay-object img-responsive">
+      <%= image_tag author.image.url(:author_image), class: "grow c-overlay-object img-responsive" %>
         <div class="c-body">
           <h4><%= link_to author.name, author %></h4>
-          <p>
-             Lorem ipsum dolor sit amet, dolor nemo amet elit. Nulla nemo consequuntur.
-          </p>
+          <p><%= author.bio %></p>
         </div>
       <!-- </a> -->
       </div>
@@ -49,3 +48,4 @@
       </div> -->
   <% end %>
 </div>
+<% end %>

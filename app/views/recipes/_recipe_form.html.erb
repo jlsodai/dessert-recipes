@@ -33,7 +33,7 @@
   </div>  
   
   <div class="form-group">
-    <label class="col-md-4 control-label" for="author_expertise">Expertise</label>
+    <label class="col-md-4 control-label" for="author_expertise">Dessert Type</label>
     <div class="col-md-4">
       <%= f.collection_select :dessert_type_id, DessertType.all, :id, :name, {prompt: " - Select Dessert Type - "}, {class: "form-control"} %>
     </div>

@@ -1,6 +1,7 @@
 class DessertTypesController < ApplicationController
   def index
     @dessert_types = DessertType.all
+    @recipes = Recipe.all
   end
 
   def show

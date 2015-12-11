@@ -9,9 +9,12 @@
     		  <%= image_tag dessert_type.image.url(:dessert_type_thumb), class: "grow" %>
     		</a>
     	</div>
-    	<div class="caption"><%= truncate(dessert_type.name, :length => 25) %></div>
+    	<div class="caption"><%= truncate(dessert_type.name, :length => 25) %> (<%=@recipes.where(dessert_type_id: dessert_type.id).count %>)</div>
     </div>
   <% end %>
 </div>
+<br/>
 <% end %>
+
+<p><%= link_to 'Add new Recipe', new_recipe_path %></p>
 <%#= link_to 'New Dessert Type', new_dessert_type_path %>

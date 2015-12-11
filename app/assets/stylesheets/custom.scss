@@ -1,3 +1,9 @@
 /* Put all custom css over here */
 .navbar-inverse{
 }
+.nav .navbar-nav > .active > a, 
+.nav .navbar-nav > .active > a:hover, {
+	color: #FCAC45;
+	background-color: transparent;
+	font-weight: 700;
+}

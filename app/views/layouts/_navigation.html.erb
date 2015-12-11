@@ -14,15 +14,42 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li>
+            
+                <% if request.url == "http://localhost:3000/authors" %>
+                <li class="active">
+             
+
+
                     <%= link_to "Authors", authors_path %>
                 </li>
-                <li>
-                    <%= link_to "Recipes", recipes_path %>
+                <% else %>
+                 <li >
+             
+                   <%= link_to "Authors", authors_path %>
                 </li>
-                <li>
+                <% end %>
+                
+                 <% if request.url == "http://localhost:3000/recipes" %>
+                <li class="active">
+                    <%= link_to "Recipes", recipes_path %>
+                </li> 
+                 <% else %>
+                 <li >
+             
+                   <%= link_to "Recipes", recipes_path %>
+                </li>
+                <% end %>  
+                
+                 <% if request.url == "http://localhost:3000/dessert_types" %>
+                <li class="active">
                     <%= link_to "Dessert Types", dessert_types_path %>
                 </li>
+                 <% else %>
+                 <li >
+             
+                   <%= link_to "Dessert Types", dessert_types_path %>
+                   <% end %>
+                
                 <% if logged_in? %>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>

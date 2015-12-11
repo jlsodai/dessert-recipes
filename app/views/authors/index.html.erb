@@ -33,8 +33,9 @@
       <div class="thumbnail">
       <%= image_tag author.image.url(:author_image), class: "c-overlay-object img-responsive" %>
         <div class="c-body">
-          <h4><%= link_to author.name + " - #{@recipes.where(author_id: author.id).count} posts", author %></h4>
-          <p><%= truncate(author.bio, :length => 35) %></p>
+          <% count = @recipes.where(author_id: author.id).count %>
+          <h4><%= link_to author.name + " - #{pluralize(count, 'recipe' )}", author %></h4>
+          <p><%= truncate(author.bio, :length => 35, :separator => ' ') %></p>
         </div>
       <!-- </a> -->
       </div>

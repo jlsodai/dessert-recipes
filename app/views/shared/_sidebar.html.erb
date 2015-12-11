@@ -1,6 +1,6 @@
 <form method="post" action="#">
   <div class="input-group">
-    <input type="text" placeholder="Search blog..." class="form-control c-square c-theme-border">
+    <input type="text" placeholder="Search Site..." class="form-control c-square c-theme-border">
     <span class="input-group-btn">
     <button type="button" class="btn c-theme-btn c-theme-border c-btn-square">Go!</button>
     </span>
@@ -12,7 +12,7 @@
 	<div class="list-group">
   		<a href="#" class="list-group-item active"><strong>Dessert Type:</strong></a>
 		<% @dessert_types.each do |dessert_type| %>
-		    <%= link_to "#{truncate(dessert_type.name, :length => 25)} (#{@recipes.where(dessert_type_id: dessert_type.id).count})", dessert_type_path(dessert_type), class: 'list-group-item' %>
+		    <%= link_to "#{truncate(dessert_type.name, :length => 25, :separator => ' ')} (#{@recipes.where(dessert_type_id: dessert_type.id).count})", dessert_type_path(dessert_type), class: 'list-group-item' %>
 		<% end %>
 	</div>
 	<% end %>

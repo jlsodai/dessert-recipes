@@ -353,3 +353,29 @@ ul, ol {
 textarea.form-control {
     height: 70px;
 }
+ol {
+    counter-reset: li-counter;
+    margin: 15px 0 0 34px;
+}
+ol > li::before {
+    background-color: #f4f4f4;
+    color: #999;
+    content: counter(li-counter, decimal);
+    counter-increment: li-counter;
+    cursor: default;
+    font-size: 16px;
+    font-weight: 700;
+    height: 34px;
+    left: -34px;
+    line-height: 32px;
+    position: absolute;
+    text-align: center;
+    top: 3px;
+    width: 34px;
+}
+ol > li {
+    line-height: 24px;
+    margin-bottom: 15px;
+    padding: 8px 14px;
+    position: relative;
+}

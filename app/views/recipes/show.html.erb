@@ -3,7 +3,7 @@
   <div class="col-md-3">
     <form method="post" action="#">
       <div class="input-group">
-        <input type="text" placeholder="Search blog..." class="form-control c-square c-theme-border">
+        <input type="text" placeholder="Search Site..." class="form-control c-square c-theme-border">
         <span class="input-group-btn">
           <button type="button" class="btn c-theme-btn c-theme-border c-btn-square">Go!</button>
         </span>
@@ -17,7 +17,7 @@
           <%= image_tag recipe.image.url(:recipe_thumb), class: "grow" %>
         </a>
       </div>
-      <div class="caption"><%= truncate(recipe.name, :length => 25) %></div>
+      <div class="caption"><%= truncate(recipe.name, :length => 25, :separator => ' ') %></div>
       <br/>
     <% end %>
   </div>
@@ -59,7 +59,8 @@
       <div class="c-panel c-margin-b-30">
         <div class="c-author">
           <a href="#">By <span class="c-font-uppercase"><%= @author.name %></span></a> on <%= @recipe.created_at.strftime("%d %b, %y - %I:%M %p") %>
-          <!-- <span class="c-comments"><%= @comments.count %> comments</span> -->
+          <% count = @comments.where(recipe_id: @recipe.id).count %>
+          <!-- <span class="c-comments"><a><%= " - #{pluralize(count, 'Comment' )}" %> comments</span> -->
         </div>
       </div>
 
@@ -69,7 +70,9 @@
         <h3>Ingredients</h3>
         <p><%= @recipe.ingredients %></p>
         <h3>Directions</h3>
-        <%= simple_format(@recipe.directions) %>
+        <ol>
+          <%= simple_format(@recipe.directions, {}, wrapper_tag: "li") %>
+        </ol>
       </div>
 
       <div class="comments">
@@ -82,7 +85,7 @@
                  <img class="avatar" src="http://2.gravatar.com/avatar/bc2aa7a0acc8abc9dee081631740382a?s=70&amp;d=mm&amp;r=g" alt="">
                  <div class="comment-content">
                    <div class="comment-by"><strong><%= c.name %></strong> <span class="date"><%= c.created_at.strftime("%d %b, %y at %I:%M %p") %></span>
-                     <a aria-label="Reply to Vasterad" onclick="" href="" class="comment-reply-link" rel="nofollow"><i class="fa fa-reply"></i>Reply</a>
+                     <a href="#" class="comment-reply-link"><i class="fa fa-reply"></i>Reply</a>
                      </div>
                      <p><%= c.content %></p>
                    </div>

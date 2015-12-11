@@ -9,6 +9,17 @@
         </span>
       </div>
     </form>
+    <br/>
+    <h3>Similar Recipes</h3>
+    <% @recipes.each do |recipe| %>
+      <div class="thumbnail">
+        <a href="<%= recipe_path(recipe.id) %>">
+          <%= image_tag recipe.image.url(:recipe_thumb), class: "grow" %>
+        </a>
+      </div>
+      <div class="caption"><%= truncate(recipe.name, :length => 25) %></div>
+      <br/>
+    <% end %>
   </div>
   <div class="col-md-9">
     <%= image_tag @recipe.image.url(:recipe_main, class: "recipe_image") %>

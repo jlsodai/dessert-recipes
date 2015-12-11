@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
   def show
       #@current_author = current_author
       @recipe = Recipe.find(params[:id])
+      @recipes = Recipe.all.limit(3)
       @comments = Comment.where(recipe_id: @recipe.id)
       @comment = Comment.new
       @author = Author.find(@recipe.author_id)

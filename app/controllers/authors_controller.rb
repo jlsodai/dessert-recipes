@@ -4,6 +4,7 @@ class AuthorsController < ApplicationController
   
   def index
     @authors = Author.all
+    @recipes = Recipe.all
   end
 
   def show

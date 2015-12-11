@@ -31,10 +31,10 @@
     <div class="col-md-3">
       <!-- <a href="<%= author_path(author) %>"> -->
       <div class="thumbnail">
-      <%= image_tag author.image.url(:author_image), class: "grow c-overlay-object img-responsive" %>
+      <%= image_tag author.image.url(:author_image), class: "c-overlay-object img-responsive" %>
         <div class="c-body">
-          <h4><%= link_to author.name, author %></h4>
-          <p><%= author.bio %></p>
+          <h4><%= link_to author.name + " - #{@recipes.where(author_id: author.id).count} posts", author %></h4>
+          <p><%= truncate(author.bio, :length => 35) %></p>
         </div>
       <!-- </a> -->
       </div>
@@ -48,4 +48,5 @@
       </div> -->
   <% end %>
 </div>
+<br/>
 <% end %>

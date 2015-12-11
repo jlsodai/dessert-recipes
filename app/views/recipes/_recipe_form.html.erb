@@ -1,57 +1,29 @@
 <%= form_for @recipe, :html => {class: 'form-horizontal', multipart: true} do |f| %>
-  <fieldset>
-  <% if logged_in? %>
-    <%= hidden_field_tag "author_id", current_author.id %>
-  <% end %>
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label">Title</label>  
-    <div class="col-md-4">
-        <%= f.text_field :name, placeholder: "Title", class: "form-control input-md" %>
-    </div>
-  </div>
+  <div class="col-md-6 col-md-offset-3">
+    <% if logged_in? %>
+      <%= hidden_field_tag "author_id", current_author.id %>
+    <% end %>
+    <!-- Text input-->
+    <label>Title</label>  
+    <%= f.text_field :name, placeholder: "Title", class: "form-control" %>
   
-  <div class="form-group">
-    <label class="col-md-4 control-label">Description</label>
-    <div class="col-md-4">
-      <%= f.text_area :description, placeholder: "Enter Description", class: "form-control input-md" %>
-    </div>
-  </div>
+    <label>Description</label>
+    <%= f.text_area :description, placeholder: "Enter Description", class: "form-control" %>
 
-  <div class="form-group">
-    <label class="col-md-4 control-label">Ingredients</label>
-    <div class="col-md-4">
-      <%= f.text_area :ingredients, placeholder: "Enter Ingredients", class: "form-control input-md" %>
-    </div>
-  </div>
+    <label>Ingredients</label>
+    <%= f.text_area :ingredients, placeholder: "Enter Ingredients", class: "form-control" %>
 
-  <div class="form-group">
-    <label class="col-md-4 control-label">Direction</label>
-    <div class="col-md-4">
-      <%= f.text_area :directions, placeholder: "Enter Ingredients", class: "form-control input-md" %>
-    </div>
-  </div>  
+    <label>Direction</label>
+    <%= f.text_area :directions, placeholder: "Enter Ingredients", class: "form-control" %>  
   
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="author_expertise">Dessert Type</label>
-    <div class="col-md-4">
-      <%= f.collection_select :dessert_type_id, DessertType.all, :id, :name, {prompt: " - Select Dessert Type - "}, {class: "form-control"} %>
-    </div>
+    <label>Dessert Type</label>
+    <%= f.collection_select :dessert_type_id, DessertType.all, :id, :name, {prompt: " - Select Dessert Type - "}, {class: "form-control"} %>
+  
+    <label>Upload Image</label>                     
+    <%= f.file_field :image, class: "form-control" %>
+  
+    <label></label>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  
   </div>
-  
-  <div class="form-group">
-    <label class="col-md-4 control-label">Upload Image</label>
-    <div class="col-md-4">                     
-      <%= f.file_field :image, class: "form-control" %>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <label class="col-md-4 control-label"></label>
-    <div class="col-md-4">
-      <%= f.submit "Submit", class: "btn btn-primary" %>
-    </div>
-  </div>
-  
-  </fieldset>
 <% end %>

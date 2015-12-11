@@ -3,76 +3,33 @@
 </div>
 
 <div class="row">
-  <%= form_for @author, :html => {class: 'form-horizontal', multipart: true} do |f| %>
-  <fieldset>
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @author, :html => {class: 'form-horizontal', multipart: true} do |f| %>
+    <fieldset>
 
-  <%= render 'shared/error_messages' %>
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="author_name">Author Name</label>  
-    <div class="col-md-4">
-    <%= f.text_field :name, placeholder: "Full Name", class: "form-control input-md" %>
-    </div>
-  </div>
-  
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="username">Username</label>  
-    <div class="col-md-4">
-    <%= f.text_field :username, placeholder: "Username", class: "form-control input-md" %>
-    </div>
-  </div>
-  
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="author_email">Email</label>  
-    <div class="col-md-4">
-    <%= f.email_field :email, placeholder: "Email", class: "form-control input-md" %>
-    </div>
-  </div>
-  
-  <!-- Password input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="author_password">Password</label>
-    <div class="col-md-4">
+    <%= render 'shared/error_messages' %>
+      <label>Name</label>  
+      <%= f.text_field :name, placeholder: "Full Name", class: "form-control input-md" %>
+    
+      <label>Username</label>  
+      <%= f.text_field :username, placeholder: "Username", class: "form-control input-md" %>
+    
+      <label>Email</label>  
+      <%= f.email_field :email, placeholder: "Email", class: "form-control input-md" %>
+
+      <label>Password</label>
       <%= f.password_field :password, placeholder: "Password", class: "form-control input-md" %>
-    </div>
-  </div>
-  
-  <!-- Select Basic 
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="author_expertise">Expertise</label>
-    <div class="col-md-4">
-      <select id="author_expertise" name="author_expertise" class="form-control">
-        <option value="Yes">Select Expertise</option>
-        <option value="No">Chef</option>
-        <option value="">Non Chef</option>
-      </select>
-    </div>
-  </div>
-  -->
-  <!-- Textarea -->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="author_bio">Profile</label>
-    <div class="col-md-4">                     
-      <%= f.text_area :bio, placeholder: "Enter Profile Details", class: "form-control" %>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label class="col-md-4 control-label">Upload Image</label>
-    <div class="col-md-4">                     
+      <label>Profile</label>
+      <%= f.text_area :bio, placeholder: "Enter Profile Details", class: "form-control" %>
+
+      <label>Upload Image</label>
       <%= f.file_field :image, class: "form-control" %>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <label class="col-md-4 control-label" for=""></label>
-    <div class="col-md-4">
+    
+      <label></label>
       <%= f.submit "Submit", class: "btn btn-primary" %>
-    </div>
+    
+    </fieldset>
+    <% end %>
   </div>
-  
-  </fieldset>
-  <% end %>
 </div>

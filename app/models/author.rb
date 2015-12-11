@@ -14,7 +14,8 @@ class Author < ActiveRecord::Base
                                 format: { with: VALID_EMAIL_REGEX },
                                 uniqueness: { case_sensitive: false }
     
-    has_attached_file :image, styles: { author_image: "350x250#", medium: "400x400#", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
+    has_attached_file :image,   styles: { author_image: "600x600#", medium: "400x400#", thumb: "100x100#" },
+                                default_url: "author_image/missing.jpg"
                                 
     validates_attachment_content_type :image,
                                 content_type: /\Aimage\/.*\Z/
